@@ -1,0 +1,81 @@
+version: '3'
+services:
+  frontend:
+    image: registry.gitlab.com/saminbjit/mernapp-frontend:v0.0.31
+    container_name: frontend
+    ports:
+      - "80:80"
+    networks:
+      - prom_net
+
+  backend:
+    image: registry.gitlab.com/saminbjit/mernapp:v1.0.0
+    container_name: backend-service
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGODB_USERNAME=root
+      - MONGODB_PASSWORD=mongopassword
+      - MONGODB_DBNAME=examdb
+      - MONGODB_SERVICE_NAME=mongodb-service
+      - MONGODB_HEADER=mongodb
+    networks:
+      - prom_net
+
+
+  mongodb:
+    image: mongo:4.4.6
+    container_name: mongodb-service
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=root
+      - MONGO_INITDB_ROOT_PASSWORD=mongopassword
+      - MONGO_INITDB_DATABASE=examdb
+    command: ["--bind_ip_all"]
+    ports:
+      - "27017:27017"
+    networks:
+      - prom_net
+
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - "./prom_config:/etc/prometheus/"
+    networks:
+      - prom_net
+
+  alertmanager:
+    image: prom/alertmanager:v0.23.0
+    container_name: alertmanager
+    restart: unless-stopped
+    ports:
+      - "9093:9093"
+    networks:
+      - prom_net
+    volumes:
+      - "./am_config:/config"
+      - "./alertmanager-data:/data"
+    command: --config.file=/config/alertmanager.yml --log.level=debug
+
+  blackbox_exporter:
+    image: quay.io/prometheus/blackbox-exporter:latest
+    container_name: blackbox_exporter
+    ports:
+      - "9115:9115"
+    configs:
+      - source: blackbox_config
+        target: /config
+    volumes:
+      - "./bbox_config:/config"
+    networks:
+      - prom_net
+
+configs:
+  blackbox_config:
+    file: ./bbox_config/blackbox.yaml
+     
+networks:
+  prom_net:
+

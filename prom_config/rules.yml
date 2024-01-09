@@ -1,0 +1,19 @@
+groups:
+  - name: Application_Status
+    rules:
+      - alert: BackendDown
+        annotations:
+          description: Backend pod HTTP traffic to port 5000 is down for more than 1 minutes.
+          summary: Backend pod HTTP 5000 is down (instance {{ $labels.instance }})
+        expr: probe_success{instance="backend-service:5000"} == 0
+        for: 10s
+        labels:
+          severity: critical
+      - alert: FrontendDown
+        annotations:
+          description: Frontend pod HTTP traffic to port 5000 is down for more than 1 minutes.
+          summary: Frontend pod HTTP 5000 is down (instance {{ $labels.instance }})
+        expr: probe_success{instance="frontend:80"} == 0
+        for: 10s
+        labels:
+          severity: critical

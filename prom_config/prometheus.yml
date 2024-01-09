@@ -1,0 +1,50 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 30s
+  body_size_limit: 15MB
+  sample_limit: 1500
+  target_limit: 30
+  label_limit: 30
+  label_name_length_limit: 200
+  label_value_length_limit: 200
+  external_labels:
+    monitor: test
+rule_files:
+  - ./rules.yml
+alerting:
+  alertmanagers:
+    - static_configs:
+      - targets:
+        - alertmanager:9093
+scrape_configs:
+  - job_name: 'frontend'
+    metrics_path: /probe
+    params:
+     module: [http_2xx]
+    static_configs:
+      - targets:
+        - frontend:80
+    relabel_configs: 
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115 
+
+  - job_name: 'backend-service'
+    metrics_path: /probe
+    params:
+     module: 
+      - http_2xx
+    static_configs:
+      - targets:
+        - backend-service:5000
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox_exporter:9115
+
