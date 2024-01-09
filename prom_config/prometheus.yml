@@ -48,3 +48,20 @@ scrape_configs:
       - target_label: __address__
         replacement: blackbox_exporter:9115
 
+  - job_name: docker
+      # metrics_path defaults to '/metrics'
+      # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ["host.docker.internal:9323"]
+
+  - job_name: node-exporter
+    static_configs:
+      - targets: ["node-exporter:9100"]
+
+  - job_name: 'cadvisor'
+    scrape_interval: 5s
+    label_value_length_limit: 500
+    sample_limit: 10000
+    static_configs:
+      - targets: ['cadvisor:8080']
