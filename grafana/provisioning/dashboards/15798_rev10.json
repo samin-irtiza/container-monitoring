@@ -1,41 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "Prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "9.3.6"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "stat",
-      "name": "Stat",
-      "version": ""
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -63,7 +26,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 15798,
   "graphTooltip": 1,
-  "id": null,
+  "id": 1,
   "links": [
     {
       "asDropdown": false,
@@ -83,7 +46,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
       },
       "fieldConfig": {
         "defaults": {
@@ -135,14 +98,15 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "exemplar": false,
           "expr": "count(container_last_seen{instance=~\"$node\",job=~\"$job\",image!=\"\"})",
@@ -162,7 +126,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
       },
       "fieldConfig": {
         "defaults": {
@@ -214,14 +178,15 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "exemplar": true,
           "expr": "sum(container_memory_usage_bytes{instance=~\"$node\",job=~\"$job\",image!=\"\"})/1024/1024",
@@ -240,7 +205,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
       },
       "fieldConfig": {
         "defaults": {
@@ -292,14 +257,15 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "exemplar": true,
           "expr": "sum(machine_memory_bytes{instance=~\"$node\",job=~\"$job\"})/1024/1024",
@@ -318,7 +284,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
       },
       "fieldConfig": {
         "defaults": {
@@ -370,14 +336,15 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "exemplar": true,
           "expr": "sum(irate(container_cpu_usage_seconds_total{instance=~\"$node\",job=~\"$job\",image!=\"\"}[$__rate_interval]) * 100) ",
@@ -396,7 +363,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
       },
       "fieldConfig": {
         "defaults": {
@@ -448,14 +415,15 @@
           "fields": "",
           "values": false
         },
-        "textMode": "auto"
+        "textMode": "auto",
+        "wideLayout": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "10.2.3",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "exemplar": true,
           "expr": "sum(machine_cpu_cores{instance=~\"$node\",job=~\"$job\"})",
@@ -474,7 +442,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
       },
       "fieldConfig": {
         "defaults": {
@@ -482,6 +450,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -495,6 +464,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 2,
             "pointSize": 5,
@@ -555,7 +525,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -575,7 +545,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
       },
       "fieldConfig": {
         "defaults": {
@@ -583,6 +553,7 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
@@ -596,6 +567,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 2,
             "pointSize": 5,
@@ -655,7 +627,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -676,7 +648,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
       },
       "fieldConfig": {
         "defaults": {
@@ -719,8 +691,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               }
             ]
           },
@@ -757,7 +728,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -773,7 +744,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -793,7 +764,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
       },
       "fieldConfig": {
         "defaults": {
@@ -872,7 +843,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -888,7 +859,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -906,8 +877,7 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 37,
-  "style": "dark",
+  "schemaVersion": 39,
   "tags": [
     "docker",
     "cadvisor",
@@ -917,10 +887,14 @@
     "list": [
       {
         "allValue": ".*",
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
         },
         "definition": "label_values(container_memory_usage_bytes{image!=\"\"}, job)",
         "description": "",
@@ -945,10 +919,14 @@
       },
       {
         "allValue": ".*",
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
         },
         "definition": "label_values(container_memory_usage_bytes{job=~\"$job\", image!=\"\"}, instance)",
         "description": "",
@@ -973,10 +951,14 @@
       },
       {
         "allValue": ".*",
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "e6e6d6d9-e678-49bf-9aa5-fb2732d26d05"
         },
         "definition": "label_values(container_memory_usage_bytes{job=~\"$job\", image!=\"\", instance=~\"$node\"}, name)",
         "hide": 0,
@@ -1029,6 +1011,6 @@
   "timezone": "browser",
   "title": "Docker monitoring with service selection",
   "uid": "m0arCBf7k",
-  "version": 22,
+  "version": 1,
   "weekStart": ""
 }
