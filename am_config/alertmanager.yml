@@ -1,0 +1,61 @@
+global:
+  resolve_timeout: 5m
+inhibit_rules:
+- equal:
+  - alertname
+  source_matchers:
+  - severity = critical
+  target_matchers:
+  - severity =~ warning|info
+- equal:
+  - alertname
+  source_matchers:
+  - severity = warning
+  target_matchers:
+  - severity = info
+receivers:
+- name: "null"
+- name: 'application_status'
+  slack_configs:
+    - api_url: <api-url> # Put Slack integrated webhook URL here"
+      channel: '<channel-name>' # the channel name should have the '#' character with no space between.
+      text: "<!channel> \nDescription: {{ .CommonAnnotations.description }}"
+      title: "{{ .CommonAnnotations.summary }}"
+      send_resolved: true
+- name: 'mail'
+  email_configs:
+    - smarthost: '<mail-server-hostname-with-port>'
+      auth_username: '<username>'
+      auth_password: "<password>"
+      from: '<sender-mail>'
+      to: '<receiver-mail>'
+route:
+  group_by:
+    - severity
+  group_interval: 1m
+  group_wait: 30s
+  receiver: "null"
+  repeat_interval: 12h
+  routes:
+  - matchers:
+    - alertname =~ "InfoInhibitor|Watchdog"
+    receiver: "null"
+    continue: true
+  - match:
+      alertname: BackendDown
+    receiver: 'application_status'
+    continue: true
+  - match:
+      alertname: BackendDown
+    receiver: 'mail'
+    continue: true
+  - match:
+      alertname: FrontendDown
+    receiver: 'application_status'
+    continue: true
+  - match:
+      alertname: FrontendDown
+    receiver: 'mail'
+    continue: true
+templates:
+- /etc/alertmanager/config/*.tmpl
