@@ -118,7 +118,7 @@ Let's see what happens behind the scenes when Prometheus scrapes a target.
 ```mermaid
 sequenceDiagram
     participant Prometheus
-	participant Target (e.g. node-exporter)
+	participant Target as Target (e.g. node-exporter)
     participant Storage
 
     Prometheus->>Target: HTTP Request: /metrics

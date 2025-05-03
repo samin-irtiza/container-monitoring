@@ -4,7 +4,7 @@ title: "Home"
 nav_order: 1
 ---
 
-# Tutorial: container-monitoring
+# Guide to Container Monitoring with Prometheus and Grafana
 
 This project uses a **monitoring system** to keep track of the health and performance of a multi-container application.  It uses *Prometheus* to collect metrics, *Grafana* to visualize them, and *Alertmanager* to send notifications when something goes wrong.  *Docker Compose* makes it easy to run all these components together.
 
