@@ -1,0 +1,47 @@
+
+# Basic site settings
+title: Container Monitoring
+description: A comprehensive guide to container monitoring using Prometheus and Grafana.
+
+# Theme settings
+remote_theme: just-the-docs/just-the-docs
+
+# Navigation
+nav_sort: case_sensitive
+
+# Aux links (shown in upper right)
+aux_links:
+  "View on GitHub":
+    - "https://github.com/samin-irtiza/container-monitoring"
+    
+# Color scheme
+color_scheme: light
+
+# Author settings
+author:
+    name: Md. Samin Irtiza
+    url: https://github.com/samin-irtiza
+
+# Mermaid settings
+mermaid:
+  version: "11.6.0"  # Pick the version you want
+  # Default configuration
+  config: |
+    directionLR
+
+# Callouts settings
+callouts:
+  warning:
+    title: Warning
+    color: red
+  note:
+    title: Note
+    color: blue
+  best-practice:
+    title: Best Practice
+    color: green
+  
+# The custom navigation
+nav:
+  - Home: index.md       # Link to your main docs index
+  - GitHub: "https://github.com/samin-irtiza/container-monitoring"
