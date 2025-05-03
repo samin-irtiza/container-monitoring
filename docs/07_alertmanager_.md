@@ -145,7 +145,7 @@ Let's see what happens behind the scenes when Prometheus sends an alert to Alert
 sequenceDiagram
     participant Prometheus
     participant Alertmanager
-    participant Receiver (e.g., Slack)
+    participant Receiver (e.g. Slack)
 
     Prometheus->>Alertmanager: Send Alert
     Alertmanager->>Alertmanager: Group & Deduplicate
