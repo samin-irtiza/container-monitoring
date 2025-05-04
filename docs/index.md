@@ -13,44 +13,34 @@ This project uses a **monitoring system** to keep track of the health and perfor
 
 ```mermaid
 %%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
-flowchart LR
-    A0["Docker Compose
-"]
-    A1["Prometheus
-"]
-    A2["Alertmanager
-"]
-    A3["Node Exporter
-"]
-    A4["Blackbox Exporter
-"]
-    A5["Grafana
-"]
-    A6["PromQL (Prometheus Query Language)
-"]
-    A7["Prometheus Configuration (prometheus.yml)
-"]
-    A8["Alerting Rules (rules.yml)
-"]
-    A9["cAdvisor
-"]
-    A0 -- "Orchestrates" --> A1
-    A0 -- "Orchestrates" --> A2
-    A0 -- "Orchestrates" --> A3
-    A0 -- "Orchestrates" --> A4
-    A0 -- "Orchestrates" --> A5
-    A0 -- "Orchestrates" --> A9
-    A1 -- "Scrapes metrics" --> A3
-    A1 -- "Scrapes metrics" --> A4
-    A1 -- "Scrapes metrics" --> A9
-    A1 -- "Sends alerts" --> A2
-    A6 -- "Executed By" --> A1
-    A1 -- "Reads configuration" --> A7
-    A1 -- "Reads rules" --> A8
-    A5 -- "Visualizes metrics" --> A1
-    A5 -- "Uses for queries" --> A6
-    A8 -- "Uses in expressions" --> A6
-    A4 -- "Exposes metrics" --> A1
+flowchart TD
+    subgraph DockerCompose["Docker Compose"]
+        A1["Prometheus"]
+        A2["Alertmanager"]
+        A5["Grafana"]
+
+        subgraph Exporters["Exporters"]
+            A3["Node Exporter"]
+            A4["Blackbox Exporter"]
+            A9["cAdvisor"]
+        end
+    end
+
+    subgraph PrometheusConfig["Prometheus Configuration"]
+        A7["prometheus.yml"]
+        A8["rules.yml"]
+    end
+
+    A6["PromQL"] -->|Executed by| A1
+    A1 -->|Reads configurations| PrometheusConfig
+    A1 -->|Sends alerts| A2
+    A1 -->|Scrapes metrics| Exporters
+
+    A8 -->|Uses in expressions| A6
+
+    A5 -->|Visualizes metrics| A1
+    A5 -->|Uses for queries| A6
+    Exporters -->|Exposes metrics| A1
 ```
 
 ## Chapters
