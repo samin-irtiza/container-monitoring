@@ -26,8 +26,8 @@ author:
 mermaid:
   version: "11.6.0"  # Pick the version you want
   # Default configuration
-  config: |
-    directionLR
+  # config: |
+  #   directionLR
 
 # Callouts settings
 callouts:
