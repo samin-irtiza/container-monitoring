@@ -12,7 +12,8 @@ This project uses a **monitoring system** to keep track of the health and perfor
 **Source Repository:** [https://github.com/samin-irtiza/container-monitoring](https://github.com/samin-irtiza/container-monitoring)
 
 ```mermaid
-flowchart TD
+%%{init: {"flowchart": {"defaultRenderer": "elk"}} }%%
+flowchart LR
     A0["Docker Compose
 "]
     A1["Prometheus
@@ -43,10 +44,11 @@ flowchart TD
     A1 -- "Scrapes metrics" --> A4
     A1 -- "Scrapes metrics" --> A9
     A1 -- "Sends alerts" --> A2
-    A1 -- "Uses for queries" --> A6
+    A6 -- "Executed By" --> A1
     A1 -- "Reads configuration" --> A7
     A1 -- "Reads rules" --> A8
     A5 -- "Visualizes metrics" --> A1
+    A5 -- "Uses for queries" --> A6
     A8 -- "Uses in expressions" --> A6
     A4 -- "Exposes metrics" --> A1
 ```
