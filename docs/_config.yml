@@ -15,7 +15,7 @@ aux_links:
     - "https://github.com/samin-irtiza/container-monitoring"
     
 # Color scheme
-color_scheme: light
+color_scheme: dark
 
 # Author settings
 author:
